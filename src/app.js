@@ -13,6 +13,7 @@ const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 app.get("/", (req, res) => {
     res.render("pages/index", {
         fivePiecesArray: fivePiecesArray,
+        episodeCodes: episodeCodes,
     });
 });
 
@@ -24,6 +25,18 @@ const fivePiecesArray = gameOfThronesEpisodes.map((obj) => ({
     summary: obj.summary,
 }));
 
+function generateEpisodeCode(episode) {
+    const paddedSeason = String(episode.season).padStart(2, "0");
+    const paddedEpisode = String(episode.episode).padStart(2, "0");
+
+    return `S${paddedSeason}E${paddedEpisode}`;
+}
+
+const episodeCodes = fivePiecesArray.map((episode) =>
+    generateEpisodeCode(episode),
+);
+
+console.log(episodeCodes);
 // app.get("/db-test", async (req, res) => {
 //     try {
 //         const dbResult = await query("select now()");
