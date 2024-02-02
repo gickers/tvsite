@@ -6,15 +6,18 @@
 <section>
   <p><a href="/db-test">Clicking this link will test to see if your db connection is ok</a></p>
 
-  <h1>Episdoe Details</h1>
-  <br>
-  <% fivePiecesArray.forEach(element => { %>
-  <h3>Title: <%= element.name %></h3>
-  <p>Season: <%= element.season%></p>
-  <p>Episode: <%= element.episode%></p>
-  <img src="<%= element.images.medium%>" alt="Episode Image">
-  <p>Summary: <%= element.summary%></p>
-  <% })%>
+
+
+  <div class="grid-container">
+    <% fivePiecesArray.forEach(element => { %>
+    <div class="card">
+      <h3>Title: <%= element.name %></h3>
+      <p>S0<%= element.season%>E0<%= element.episode%></p>
+      <img src="<%= element.images.medium%>" alt="Episode Image">
+      <p>Summary: <%= element.summary%></p>
+    </div>
+    <% })%>
+  </div>
 </section>
 
 <%- include("../partials/footer.ejs") %>

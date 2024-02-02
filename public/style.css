@@ -14,3 +14,24 @@ footer {
     border-top: 4px solid #888;
     text-align: center;
 }
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: 0 space-around;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
