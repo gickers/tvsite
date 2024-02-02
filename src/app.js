@@ -11,21 +11,18 @@ const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 
 //configure the server's route handlers
 app.get("/", (req, res) => {
-    res.render("pages/index");
+    res.render("pages/index", {
+        fivePiecesArray: fivePiecesArray,
+    });
 });
 
-function dataGather(data) {
-    let fivePieces = [];
-    for (const element of data) {
-        fivePieces.push(element.name);
-        fivePieces.push(element.season);
-        fivePieces.push(element.number);
-        fivePieces.push(element.image.medium);
-        fivePieces.push(element.summary);
-    }
-    return fivePieces;
-}
-dataGather(gameOfThronesEpisodes);
+const fivePiecesArray = gameOfThronesEpisodes.map((obj) => ({
+    name: obj.name,
+    season: obj.season,
+    episode: obj.number,
+    images: obj.image,
+    summary: obj.summary,
+}));
 
 // app.get("/db-test", async (req, res) => {
 //     try {
