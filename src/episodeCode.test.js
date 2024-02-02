@@ -1,4 +1,4 @@
-const { generateEpisodeCode } = require("./episodeCode.js");
+const { generateEpisodeCode } = require("./app.js");
 
 test("episode code test for season 2 episode 7: ", () => {
     const episode1 = { season: 2, episode: 7 };

@@ -70,3 +70,5 @@ app.listen(PORT_NUMBER, () => {
         `Your express app started listening on ${PORT_NUMBER} at ${new Date()}`,
     );
 });
+
+exports.generateEpisodeCode = generateEpisodeCode;
