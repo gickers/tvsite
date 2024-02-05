@@ -11,11 +11,16 @@ const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 
 //configure the server's route handlers here
 app.get("/", (req, res) => {
-    res.render("pages/index", {
+    res.render("pages/index")
+});
+
+app.get("/fullList", (req, res) => {
+    res.render("pages/fullList", {
         gameOfThronesEpisodes: gameOfThronesEpisodes,
         episodeCodes: episodeCodes,
     });
 });
+
 app.get("/:id", (req, res) => {
     const episodeID = parseInt(req.params.id);
 

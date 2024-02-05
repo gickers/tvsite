@@ -8,16 +8,7 @@
 
 
 
-  <div class="grid-container">
-    <% gameOfThronesEpisodes.forEach((element, index) => { %>
-    <div class="card">
-      <p> <%= episodeCodes[index]%></p>
-      <h3> <a href="<%=element.id%>"><%= element.name %></a></h3>
-      <img src="<%= element.image.medium%>" alt="Episode Image">
-      <p> <%- element.summary%></p>
-    </div>
-    <% })%>
-  </div>
-</section>
+<h1>Welcome to our Game Of Thrones site!</h1>
+<h2>Lovingly made by Team Loss!</h2>
 
 <%- include("../partials/footer.ejs") %>
