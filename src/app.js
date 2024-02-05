@@ -36,7 +36,7 @@ const episodeCodes = fivePiecesArray.map((episode) =>
     generateEpisodeCode(episode),
 );
 
-console.log(episodeCodes);
+//console.log(episodeCodes);
 // app.get("/db-test", async (req, res) => {
 //     try {
 //         const dbResult = await query("select now()");
