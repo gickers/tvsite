@@ -9,7 +9,7 @@ const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 //You can delete this once you see the episodes have loaded ok.
 //summariseEpisodesToConsole(gameOfThronesEpisodes);
 
-//configure the server's route handlers
+//configure the server's route handlers here
 app.get("/", (req, res) => {
     res.render("pages/index", {
         gameOfThronesEpisodes: gameOfThronesEpisodes,
@@ -17,15 +17,22 @@ app.get("/", (req, res) => {
     });
 });
 app.get("/:id", (req, res) => {
-    //const episodeID = req.params.id;
+    const episodeID = parseInt(req.params.id);
 
-    //const selectedEpisode = findEpisodeById(episodeID, gameOfThronesEpisodes);
-    const selectedEpisode = gameOfThronesEpisodes[0];
+    const selectedEpisode = findEpisodeById(episodeID, gameOfThronesEpisodes);
+    console.log(selectedEpisode);
     res.render("pages/episode", {
         episode: selectedEpisode,
     });
 });
 
+function findEpisodeById(id, array) {
+    for (let element of array) {
+        if (id === element.id) {
+            return element;
+        }
+    }
+}
 const fivePiecesArray = gameOfThronesEpisodes.map((obj) => ({
     name: obj.name,
     season: obj.season,
