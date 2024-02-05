@@ -9,11 +9,11 @@
 
 
   <div class="grid-container">
-    <% fivePiecesArray.forEach((element, index) => { %>
+    <% gameOfThronesEpisodes.forEach((element, index) => { %>
     <div class="card">
       <p> <%= episodeCodes[index]%></p>
-      <h3> <%= element.name %></h3>
-      <img src="<%= element.images.medium%>" alt="Episode Image">
+      <h3> <a href="<%=element.id%>"><%= element.name %></a></h3>
+      <img src="<%= element.image.medium%>" alt="Episode Image">
       <p> <%- element.summary%></p>
     </div>
     <% })%>

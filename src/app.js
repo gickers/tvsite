@@ -12,8 +12,17 @@ const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 //configure the server's route handlers
 app.get("/", (req, res) => {
     res.render("pages/index", {
-        fivePiecesArray: fivePiecesArray,
+        gameOfThronesEpisodes: gameOfThronesEpisodes,
         episodeCodes: episodeCodes,
+    });
+});
+app.get("/:id", (req, res) => {
+    //const episodeID = req.params.id;
+
+    //const selectedEpisode = findEpisodeById(episodeID, gameOfThronesEpisodes);
+    const selectedEpisode = gameOfThronesEpisodes[0];
+    res.render("pages/episode", {
+        episode: selectedEpisode,
     });
 });
 
