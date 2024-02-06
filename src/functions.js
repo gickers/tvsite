@@ -17,4 +17,12 @@ function filterThroughEpisodes(searchWord) {
     });
 }
 
+function generateEpisodeCode(episode) {
+    const paddedSeason = String(episode.season).padStart(2, "0");
+    const paddedEpisode = String(episode.number).padStart(2, "0");
+
+    return `S${paddedSeason}E${paddedEpisode}`;
+}
+
+exports.generateEpisodeCode = generateEpisodeCode;
 exports.filterThroughEpisodes = filterThroughEpisodes;
