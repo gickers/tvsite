@@ -1,7 +1,7 @@
 const { app } = require("./support/setupExpress");
 const { query } = require("./support/db");
 const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
-
+const { filterThroughEpisodes } = require("./functions.js");
 /** 
  @typedef {import('./data/episodeType').Episode} Episode
 */
@@ -16,21 +16,13 @@ app.get("/", (req, res) => {
 
 app.get("/fullList", (req, res) => {
     const wordToSearch = req.query.searchTerm;
-    const filteredEpisodes = gameOfThronesEpisodes.filter((episode) => {
-        const nameMatch = episode.name
-            .toLowerCase()
-            .includes(wordToSearch.toLowerCase());
-        const summaryMatch = episode.summary
-            .toLowerCase()
-            .includes(wordToSearch.toLowerCase());
-
-        return nameMatch || summaryMatch;
-    });
-
+    const filteredEpisodes = filterThroughEpisodes(wordToSearch);
+    console.log(filteredEpisodes);
     res.render("pages/fullList", {
-        gameOfThronesEpisodes: filteredEpisodes,
+        gameOfThronesEpisodes,
         episodeCodes: episodeCodes,
         filteredEpisodes: filteredEpisodes,
+        generateEpisodeCode: generateEpisodeCode,
     });
 });
 
@@ -38,7 +30,6 @@ app.get("/:id", (req, res) => {
     const episodeID = parseInt(req.params.id);
 
     const selectedEpisode = findEpisodeById(episodeID, gameOfThronesEpisodes);
-    console.log(selectedEpisode);
     res.render("pages/episode", {
         episode: selectedEpisode,
     });
@@ -96,5 +87,3 @@ app.listen(PORT_NUMBER, () => {
         `Your express app started listening on ${PORT_NUMBER} at ${new Date()}`,
     );
 });
-
-exports.generateEpisodeCode = generateEpisodeCode;
