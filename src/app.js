@@ -2,6 +2,7 @@ const { app } = require("./support/setupExpress");
 const { query } = require("./support/db");
 const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 const { filterThroughEpisodes } = require("./functions.js");
+const { generateEpisodeCode } = require("./functions.js");
 /** 
  @typedef {import('./data/episodeType').Episode} Episode
 */
@@ -17,7 +18,6 @@ app.get("/", (req, res) => {
 app.get("/fullList", (req, res) => {
     const wordToSearch = req.query.searchTerm;
     const filteredEpisodes = filterThroughEpisodes(wordToSearch);
-    console.log(filteredEpisodes);
     res.render("pages/fullList", {
         gameOfThronesEpisodes,
         episodeCodes: episodeCodes,
@@ -41,12 +41,6 @@ function findEpisodeById(id, array) {
             return element;
         }
     }
-}
-function generateEpisodeCode(episode) {
-    const paddedSeason = String(episode.season).padStart(2, "0");
-    const paddedEpisode = String(episode.number).padStart(2, "0");
-
-    return `S${paddedSeason}E${paddedEpisode}`;
 }
 
 const episodeCodes = gameOfThronesEpisodes.map((episode) =>
