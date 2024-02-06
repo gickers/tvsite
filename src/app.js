@@ -11,21 +11,28 @@ const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 
 //configure the server's route handlers here
 app.get("/", (req, res) => {
-    res.render("pages/index")
+    res.render("pages/index");
 });
 
 app.get("/fullList", (req, res) => {
     const wordToSearch = req.query.searchTerm;
-    console.log(wordToSearch)
+    const filteredEpisodes = gameOfThronesEpisodes.filter((episode) => {
+        const nameMatch = episode.name
+            .toLowerCase()
+            .includes(wordToSearch.toLowerCase());
+        const summaryMatch = episode.summary
+            .toLowerCase()
+            .includes(wordToSearch.toLowerCase());
+
+        return nameMatch || summaryMatch;
+    });
+
     res.render("pages/fullList", {
-        gameOfThronesEpisodes: gameOfThronesEpisodes,
+        gameOfThronesEpisodes: filteredEpisodes,
         episodeCodes: episodeCodes,
+        filteredEpisodes: filteredEpisodes,
     });
 });
-
-function displayEpisodes(searchString, array){
-    
-}
 
 app.get("/:id", (req, res) => {
     const episodeID = parseInt(req.params.id);
@@ -44,25 +51,16 @@ function findEpisodeById(id, array) {
         }
     }
 }
-const fivePiecesArray = gameOfThronesEpisodes.map((obj) => ({
-    name: obj.name,
-    season: obj.season,
-    episode: obj.number,
-    images: obj.image,
-    summary: obj.summary,
-}));
-
 function generateEpisodeCode(episode) {
     const paddedSeason = String(episode.season).padStart(2, "0");
-    const paddedEpisode = String(episode.episode).padStart(2, "0");
+    const paddedEpisode = String(episode.number).padStart(2, "0");
 
     return `S${paddedSeason}E${paddedEpisode}`;
 }
 
-const episodeCodes = fivePiecesArray.map((episode) =>
+const episodeCodes = gameOfThronesEpisodes.map((episode) =>
     generateEpisodeCode(episode),
 );
-
 
 //console.log(episodeCodes);
 // app.get("/db-test", async (req, res) => {
