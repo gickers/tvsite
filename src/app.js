@@ -15,11 +15,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/fullList", (req, res) => {
+    const wordToSearch = req.query.searchTerm;
+    console.log(wordToSearch)
     res.render("pages/fullList", {
         gameOfThronesEpisodes: gameOfThronesEpisodes,
         episodeCodes: episodeCodes,
     });
 });
+
+function displayEpisodes(searchString, array){
+    
+}
 
 app.get("/:id", (req, res) => {
     const episodeID = parseInt(req.params.id);
@@ -56,6 +62,7 @@ function generateEpisodeCode(episode) {
 const episodeCodes = fivePiecesArray.map((episode) =>
     generateEpisodeCode(episode),
 );
+
 
 //console.log(episodeCodes);
 // app.get("/db-test", async (req, res) => {

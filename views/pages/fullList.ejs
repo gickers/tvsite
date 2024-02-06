@@ -6,7 +6,10 @@
 <section>
   <!--<p><a href="/db-test">Clicking this link will test to see if your db connection is ok</a></p>-->
 
-
+  <form action="/fullList" method="GET">
+    <input type="text" name="searchTerm" placeholder="episode search" />
+    <button type="submit">submit</button>
+  </form>
 
   <div class="grid-container">
     <% gameOfThronesEpisodes.forEach((element, index) => { %>
