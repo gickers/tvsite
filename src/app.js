@@ -3,6 +3,7 @@ const { query } = require("./support/db");
 const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 const { filterThroughEpisodes } = require("./functions.js");
 const { generateEpisodeCode } = require("./functions.js");
+const { addFavourites } = require("./functions.js");
 /** 
  @typedef {import('./data/episodeType').Episode} Episode
 */
@@ -23,6 +24,7 @@ app.get("/fullList", (req, res) => {
         episodeCodes: episodeCodes,
         filteredEpisodes: filteredEpisodes,
         generateEpisodeCode: generateEpisodeCode,
+        addFavourites: addFavourites,
     });
 });
 
