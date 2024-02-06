@@ -24,5 +24,23 @@ function generateEpisodeCode(episode) {
     return `S${paddedSeason}E${paddedEpisode}`;
 }
 
+function addFavourites(){
+    const favouriteButton = document.getElementById('favouriteButton');
+    let isFavourite = false;
+
+    favouriteButton.addEventListener('click', function() {
+        isFavourite = !isFavourite; // Toggle favourite status
+
+        if (isFavourite) {
+            favouriteButton.textContent = 'Favourited';
+            favouriteButton.classList.add('favourite'); // Apply styling
+        } else {
+            favouriteButton.textContent = 'Favourite';
+            favouriteButton.classList.remove('favourite'); // Remove styling
+        }
+    });
+}
+
+exports.addFavourites = addFavourites;
 exports.generateEpisodeCode = generateEpisodeCode;
 exports.filterThroughEpisodes = filterThroughEpisodes;

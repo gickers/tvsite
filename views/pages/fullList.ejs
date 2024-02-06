@@ -18,6 +18,10 @@
       <h3> <a href="<%=element.id%>"><%= element.name %></a></h3>
       <img src="<%= element.image.medium%>" alt="Episode Image">
       <p> <%- element.summary%></p>
+      
+      <button type="button" id="favouriteButton" onclick="<%= addFavourites() %>">Mark as Favourite</button>
+      <script>addFavourites()</script>
+     
     </div>
     <% })%>
   </div>
