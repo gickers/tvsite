@@ -35,6 +35,7 @@ app.get("/search/:id", (req, res) => {
     const selectedEpisode = findEpisodeById(episodeID, gameOfThronesEpisodes);
     res.render("pages/episode", {
         episode: selectedEpisode,
+        removePTags: removePTags
     });
 });
 
