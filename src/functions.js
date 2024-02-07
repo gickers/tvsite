@@ -24,7 +24,15 @@ function generateEpisodeCode(episode) {
     return `S${paddedSeason}E${paddedEpisode}`;
 }
 
-
+function removePTags(episodes) {
+    return episodes.map((episode) => {
+        if (episode.summary && episode.summary.includes('<p>')) {
+            episode.summary = episode.summary.replace(/<p>/, '').replace(/<\/p>/, '');
+        }
+        return episode.summary;
+    });
+}
 
 exports.generateEpisodeCode = generateEpisodeCode;
 exports.filterThroughEpisodes = filterThroughEpisodes;
+exports.removePTags = removePTags;
