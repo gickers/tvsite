@@ -3,7 +3,7 @@ const { query } = require("./support/db");
 const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 const { filterThroughEpisodes } = require("./functions.js");
 const { generateEpisodeCode } = require("./functions.js");
-const { removePTags } = require("./functions.js")
+const { removePTags } = require("./functions.js");
 /** 
  @typedef {import('./data/episodeType').Episode} Episode
 */
@@ -11,7 +11,7 @@ const { removePTags } = require("./functions.js")
 //You can delete this once you see the episodes have loaded ok.
 //summariseEpisodesToConsole(gameOfThronesEpisodes);
 
-//configure the server's route handlers here
+//configure the server's route handlers here --
 
 app.get("/", (req, res) => {
     res.render("pages/index");
@@ -25,7 +25,7 @@ app.get("/fullList", (req, res) => {
         episodeCodes: episodeCodes,
         filteredEpisodes: filteredEpisodes,
         generateEpisodeCode: generateEpisodeCode,
-        removePTags: removePTags
+        removePTags: removePTags,
     });
 });
 
@@ -35,13 +35,13 @@ app.get("/search/:id", (req, res) => {
     const selectedEpisode = findEpisodeById(episodeID, gameOfThronesEpisodes);
     res.render("pages/episode", {
         episode: selectedEpisode,
-        removePTags: removePTags
+        removePTags: removePTags,
     });
 });
 
 app.use((req, res) => {
     res.status(404).render("pages/404");
-  });
+});
 
 function findEpisodeById(id, array) {
     for (let element of array) {
