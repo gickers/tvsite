@@ -2,10 +2,10 @@
 
 
 <h2><%= episode.name %></h2>
-<p>Runtime: <%= episode.runtime %></p>
-<p>Date first aired: <%= episode.airdate %></p>
-<p>Average Rating <%= episode.rating.average %></p>
-<p>Summary: <%- episode.summary %></p>
+<p>Runtime: <%= episode.runtime %><br>
+Date first aired: <%= episode.airdate %><br>
+Average Rating <%= episode.rating.average %><br>
+Summary: <%= removePTags([episode]) [0] %> %></p>
 <img src="<%=episode.image.original%>"> %></img>
 
 
