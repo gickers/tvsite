@@ -3,6 +3,7 @@ const { query } = require("./support/db");
 const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 const { filterThroughEpisodes } = require("./functions.js");
 const { generateEpisodeCode } = require("./functions.js");
+const { removePTags } = require("./functions.js")
 /** 
  @typedef {import('./data/episodeType').Episode} Episode
 */
@@ -11,6 +12,7 @@ const { generateEpisodeCode } = require("./functions.js");
 //summariseEpisodesToConsole(gameOfThronesEpisodes);
 
 //configure the server's route handlers here
+
 app.get("/", (req, res) => {
     res.render("pages/index");
 });
@@ -23,6 +25,7 @@ app.get("/fullList", (req, res) => {
         episodeCodes: episodeCodes,
         filteredEpisodes: filteredEpisodes,
         generateEpisodeCode: generateEpisodeCode,
+        removePTags: removePTags
     });
 });
 

@@ -17,7 +17,7 @@
       <p> <%= generateEpisodeCode(element) %></p>
       <h3> <a href="search/<%=element.id%>"><%= element.name %></a></h3>
       <img src="<%= element.image.medium%>" alt="Episode Image">
-      <p> <%- element.summary%></p>
+      <p> <%= removePTags([element]) [0] %></p>
      
     </div>
     <% })%>
