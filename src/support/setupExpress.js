@@ -2,7 +2,7 @@ const express = require("express");
 const { connectLiveReload } = require("./liveReloadSupport");
 require("dotenv").config(); //load key-value pairs from any .env files into process.env
 const cors = require("cors");
-const session = require("express-session");
+// const session = require("express-session");
 const morgan = require("morgan");
 
 const app = express();

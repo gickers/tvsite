@@ -1,5 +1,5 @@
 const { app } = require("./support/setupExpress");
-const { query } = require("./support/db");
+// const { query } = require("./support/db");
 const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 const { filterThroughEpisodes } = require("./functions.js");
 const { generateEpisodeCode } = require("./functions.js");
