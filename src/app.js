@@ -3,7 +3,6 @@ const { query } = require("./support/db");
 const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 const { filterThroughEpisodes } = require("./functions.js");
 const { generateEpisodeCode } = require("./functions.js");
-const { addFavourites } = require("./functions.js");
 /** 
  @typedef {import('./data/episodeType').Episode} Episode
 */
@@ -24,11 +23,10 @@ app.get("/fullList", (req, res) => {
         episodeCodes: episodeCodes,
         filteredEpisodes: filteredEpisodes,
         generateEpisodeCode: generateEpisodeCode,
-        addFavourites: addFavourites,
     });
 });
 
-app.get("/:id", (req, res) => {
+app.get("/search/:id", (req, res) => {
     const episodeID = parseInt(req.params.id);
 
     const selectedEpisode = findEpisodeById(episodeID, gameOfThronesEpisodes);
@@ -36,6 +34,10 @@ app.get("/:id", (req, res) => {
         episode: selectedEpisode,
     });
 });
+
+app.use((req, res) => {
+    res.status(404).render("pages/404");
+  });
 
 function findEpisodeById(id, array) {
     for (let element of array) {
