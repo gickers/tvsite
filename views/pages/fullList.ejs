@@ -1,0 +1,27 @@
+<%- include("../partials/header.ejs", {title: "Game Of Thrones"}) %>
+
+
+<section>
+
+
+  <p>"That's what I do, I drink and I know things" - Tyrion Lannister</p>
+
+  <form action="/fullList" method="GET">
+    <input type="text" name="searchTerm" placeholder="episode search" />
+    <button type="submit">submit</button>
+  </form>
+  <h2><%=filteredEpisodes.length%> of 73 Episodes</h2>
+  <div class="grid-container">
+    <% filteredEpisodes.forEach((element, index) => { %>
+    <div class="card">
+      <p> <%= generateEpisodeCode(element) %></p>
+      <h3> <a href="search/<%=element.id%>"><%= element.name %></a></h3>
+      <img src="<%= element.image.medium%>" alt="Episode Image">
+      <p> <%= removePTags([element]) [0] %></p>
+     
+    </div>
+    <% })%>
+  </div>
+</section>
+
+<%- include("../partials/footer.ejs") %>

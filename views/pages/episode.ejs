@@ -1,0 +1,14 @@
+<%- include("../partials/header.ejs", {title: "Episode Details"}) %>
+
+
+<h2><%= episode.name %></h2>
+<p>Runtime: <%= episode.runtime %><br>
+Date first aired: <%= episode.airdate %><br>
+Average Rating <%= episode.rating.average %><br>
+Summary: <%= removePTags([episode]) [0] %> %></p>
+<img src="<%=episode.image.original%>"> %></img>
+
+
+
+
+<%- include("../partials/footer.ejs") %>

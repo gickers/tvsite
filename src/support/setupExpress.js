@@ -2,8 +2,7 @@ const express = require("express");
 const { connectLiveReload } = require("./liveReloadSupport");
 require("dotenv").config(); //load key-value pairs from any .env files into process.env
 const cors = require("cors");
-const session = require("express-session");
-const { getEnvVarOrFail } = require("./envVarHelp");
+// const session = require("express-session");
 const morgan = require("morgan");
 
 const app = express();
@@ -18,14 +17,6 @@ app.use(express.urlencoded({ extended: false }));
 
 //auto-include CORS headers to allow consumption of our content by in-browser js loaded from elsewhere
 app.use(cors());
-
-app.use(
-    session({
-        secret: getEnvVarOrFail("SESSION_SECRET"),
-        resave: false,
-        saveUninitialized: false,
-    }),
-);
 
 console.log("process.env.NODE_ENV is " + process.env.NODE_ENV);
 if (process.env.NODE_ENV !== "production") {

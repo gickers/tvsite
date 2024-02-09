@@ -7,10 +7,45 @@
 body {
     margin: 0 auto;
     max-width: 1200px;
+    background-image: url("game.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    height: 100vh;
 }
 
 footer {
     margin-top: 2rem;
     border-top: 4px solid #888;
     text-align: center;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: 0 space-around;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+section {
+    background-color: rgba(240, 255, 255, 0.804);
+}
+
+p {
+    background-color: rgba(240, 255, 255, 0.804);
 }
